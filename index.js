@@ -35,7 +35,7 @@ app.use(xss());
 
 // Load API routes
 const router = require('./app/routes/__index');
-app.use('/', router)
+app.use('/', router);
 
 // Sample API endpoint
 app.get('/demo', (req, res) => {
