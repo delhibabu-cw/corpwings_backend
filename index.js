@@ -40,7 +40,7 @@ app.use(xss());
 // });
 
 // Load API routes
-const router = require('./app/routes/jobApplication');
+const router = require('./app/routes/__index');
 app.use('/', router);
 
 // Sample API endpoint
