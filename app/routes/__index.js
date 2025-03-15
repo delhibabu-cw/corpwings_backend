@@ -7,10 +7,10 @@ const middleware = require('../middlewares');
 fs.readdirSync(__dirname)
   .filter((file) => file.indexOf('.') !== 0 && file !== '__index.js' && file !== '__common.js')
   .forEach((file) => {
-    // console.info(`Loading file ${file}`);
+    console.info(`Loading file ${file}`);
     if (file.slice(-3) === '.js') {
       const routesFile = require(`${__dirname}/${file}`);
-      console.log(routesFile);
+      // console.log(routesFile);
       
       if (file === 'auth.js') {
         router.use('/', middleware.checkSetToken(), routesFile);
