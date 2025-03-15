@@ -53,6 +53,7 @@
 
 const { app, dotenv, morgan, bodyParser, helmet, xss, cors } = require('./app/services/imports');
 const serverless = require('serverless-http');
+const middleware = require("./app/middlewares/index");
 
 dotenv.config();
 const config = require('./app/config/config');
@@ -87,8 +88,22 @@ app.get("/", (req, res) => {
 });
 
 // Load API routes
-const router = require('./app/routes/__index');
-app.use('/api', router);
+// const router = require('./app/routes/__index');
+// app.use('/', router);
+const authRoutes = require("./auth");
+const userRoutes = require("./user");
+const careersRoutes = require("./carrers");
+const jobApplicationRoutes = require("./jobApplication");
+const roleRoutes = require("./role");
+const uploadRoutes = require("./upload");
+
+// Apply middleware and define routes
+app.use("/auth", middleware.checkSetToken(), authRoutes);
+app.use("/user", middleware.checkSetToken(), userRoutes);
+app.use("/careers", middleware.checkSetToken(), careersRoutes);
+app.use("/jobApplication", middleware.checkSetToken(), jobApplicationRoutes);
+app.use("/role", middleware.checkSetToken(), roleRoutes);
+app.use("/upload", middleware.checkSetToken(), uploadRoutes);
 
 // ✅ Export as a Serverless Function for Vercel
 module.exports = app;
