@@ -7,7 +7,7 @@ mongoose.connect(config.DB_URL,
 	console.log('database connected', config.DB_URL);
 }).catch((error) => {
 	console.log('Error connecting to DB=================');
-	console.log(error);
+	console.log(error)
 	process.exit(1); // 1 for because since this exception not handled by us
 });
 // mongoose.set('debug', process.env.NODE_ENV === 'development');

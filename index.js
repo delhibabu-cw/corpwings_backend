@@ -90,12 +90,12 @@ app.get("/", (req, res) => {
 // Load API routes
 // const router = require('./app/routes/__index');
 // app.use('/', router);
-const authRoutes = require("./auth");
-const userRoutes = require("./user");
-const careersRoutes = require("./carrers");
-const jobApplicationRoutes = require("./jobApplication");
-const roleRoutes = require("./role");
-const uploadRoutes = require("./upload");
+const authRoutes = require("./app/routes/auth");
+const userRoutes = require("./app/routes/user");
+const careersRoutes = require("./app/routes/carrers");
+const jobApplicationRoutes = require("./app/routes/jobApplication");
+const roleRoutes = require("./app/routes/role");
+const uploadRoutes = require("./app/routes/upload");
 
 // Apply middleware and define routes
 app.use("/auth", middleware.checkSetToken(), authRoutes);
