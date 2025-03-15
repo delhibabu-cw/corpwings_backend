@@ -3,10 +3,11 @@ const { app, dotenv, morgan, bodyParser, helmet, xss, cors } = require('./app/se
 dotenv.config();
 const config = require('./app/config/config');
 const responseHandler = require('./app/middlewares/response-handler');
-const { jobApplication } = require('./app/controllers');
+// const { jobApplication } = require('./app/controllers');
 
 // Define env values
 dotenv.config();
+console.log(process.env.PORT);
 
 // Database connection
 require('./db_connection');
@@ -39,15 +40,15 @@ app.use(xss());
 // });
 
 // Load API routes
-const router = require('./app/routes/__index');
+const router = require('./app/routes/jobApplication');
 app.use('/', router);
 
 // Sample API endpoint
-app.get('/auth/demo', (req, res) => {
-  res.created({ msg: 'Request successful', statusCode: 200 });
-});
+// app.get('/auth/demo', (req, res) => {
+//   res.created({ msg: 'Request successful', statusCode: 200 });
+// });
 
-app.get('/jobApply/:id?', jobApplication.getJobApplication)
+// app.get('/jobApply/:id?', jobApplication.getJobApplication)
 
 
 // Start the server
