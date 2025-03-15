@@ -40,7 +40,7 @@ app.get("/", (req, res) => {
 });
 
 // Load API routes
-const router = require('./app/routes/__index');
+const router = require('./app/routes/user');
 app.use('/', router);
 
 
