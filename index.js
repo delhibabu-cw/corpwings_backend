@@ -35,20 +35,14 @@ app.use(helmet());
 // Sanitize request data to prevent XSS attacks
 app.use(xss());
 
-// app.get("/", (req, res) => {
-//   res.json({ message: "Hello world From Backend" });
-// });
+app.get("/", (req, res) => {
+  res.json({ message: "Hello world From Backend" });
+});
 
 // Load API routes
 const router = require('./app/routes/__index');
 app.use('/', router);
 
-// Sample API endpoint
-// app.get('/auth/demo', (req, res) => {
-//   res.created({ msg: 'Request successful', statusCode: 200 });
-// });
-
-// app.get('/jobApply/:id?', jobApplication.getJobApplication)
 
 
 // Start the server
