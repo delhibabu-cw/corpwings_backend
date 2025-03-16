@@ -27,7 +27,7 @@ app.use('/demo', (req, res) => {
     return res.json({ msg: `Port successfully running on ${port} `})
 })
 
-const rout = require('./app/router/__index');
+const rout = require('./app/routes/__index');
 app.use('/', rout)
 
 app.listen(port, () => { console.log(`Port successfully running on ${port}`)})
