@@ -9,7 +9,12 @@ const responseHandler = require('./app/middlewares/response-handler');
 
 app.use(express.json())
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors())
+// app.use(cors())
+app.use(cors({
+  origin: "*", // Allow all origins (change "*" to your frontend URL for better security)
+  methods: "GET,POST,PUT,DELETE",
+  allowedHeaders: "Content-Type,Authorization"
+}));
 
 require('./db_connection')
 app.use(responseHandler())
