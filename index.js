@@ -1,38 +1,101 @@
-const { express, bodyParser, helmet, xss, dotenv, morgan, cors } = require('./app/services/imports')
-const app = express();
-dotenv.config()
-const { port } = require('./app/config/config')
+// const { app, dotenv, morgan, bodyParser, helmet, xss, cors } = require('./app/services/imports');
+
+// dotenv.config();
+// const config = require('./app/config/config');
+// const responseHandler = require('./app/middlewares/response-handler');
+// // const { jobApplication } = require('./app/controllers');
+
+// // Define env values
+// dotenv.config();
+// console.log(process.env.PORT);
+
+// // Database connection
+// require('./db_connection');
+
+
+// // ✅ Enable CORS
+// app.use(cors({
+//   origin: "*", // Allow all origins (change "*" to your frontend URL for better security)
+//   methods: "GET,POST,PUT,DELETE",
+//   allowedHeaders: "Content-Type,Authorization"
+// }));
+
+// // Response handler middleware
+// app.use(responseHandler());
+
+// // Log the HTTP requests
+// app.use(morgan('tiny'));
+
+// // Using bodyParser to parse JSON bodies into JS objects
+// app.use(bodyParser.json());
+
+// // Adding Helmet to enhance API security
+// app.use(helmet());
+
+// // Sanitize request data to prevent XSS attacks
+// app.use(xss());
+
+// app.get("/", (req, res) => {
+//   res.json({ message: "Hello world From Backend" });
+// });
+
+// // Load API routes
+// const router = require('./app/routes/__index');
+// app.use('/', router);
 
 
 
+// // Start the server
+// const port = config.port;
+// app.listen(port, () => {
+//   console.log(`Server running on port ${port}`);
+// });
+
+const { app, dotenv, morgan, bodyParser, helmet, xss, cors } = require('./app/services/imports');
+const serverless = require('serverless-http');
+
+dotenv.config();
+const config = require('./app/config/config');
 const responseHandler = require('./app/middlewares/response-handler');
 
-app.use(express.json())
-app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(cors())
+// Database connection
+require('./db_connection');
+
+// ✅ Enable CORS
 app.use(cors({
-  origin: "*", // Allow all origins (change "*" to your frontend URL for better security)
+  origin: "*", // Change this to your frontend URL for better security
   methods: "GET,POST,PUT,DELETE",
   allowedHeaders: "Content-Type,Authorization"
 }));
 
-require('./db_connection')
-app.use(responseHandler())
+// Response handler middleware
+app.use(responseHandler());
 
-
+// Log HTTP requests
 app.use(morgan('tiny'));
 
-// adding Helmet to enhance your API's security
-app.use(helmet());
+// Parse request body
+app.use(bodyParser.json());
 
-// sanitize request data
+// Security middleware
+app.use(helmet());
 app.use(xss());
 
-app.use('/demo', (req, res) => {
-    return res.json({ msg: `Port successfully running on ${port} `})
-})
+// Test Route
+app.get("/", (req, res) => {
+ return res.json({ message: "Hello world From Backend" });
+});
 
-const rout = require('./app/routes/__index');
-app.use('/', rout)
+// Load API routes
+const router = require('./app/routes/__index');
+app.use('/', router);
 
-app.listen(port, () => { console.log(`Port successfully running on ${port}`)})
+// ✅ Export as a Serverless Function for Vercel
+// module.exports = app;
+// module.exports.handler = serverless(app);
+const port = config.port;
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
+
+
