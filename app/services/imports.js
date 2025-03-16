@@ -20,6 +20,7 @@ const exportsJson = {
     multer: require('multer'),
     nodeMailer: require('nodemailer'),
     cloudinary: require('cloudinary'),
+    path: require('path')
     // CloudinaryStorage: require('multer-storage-cloudinary').CloudinaryStorage
 }
 module.exports = {

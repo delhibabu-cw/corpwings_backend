@@ -54,5 +54,39 @@ module.exports = {
         console.log('\n role check error...', error);
         return res.unauthorized({ msg: responseMessages[1006] });
       }
-    }
+    },
+    isAuthorized: () => async (req, res, next) => {
+      const ignorePaths = [
+          'auth',
+          'signup',
+          'signin',
+          'otp'
+      ];
+      const getUrl = req.url.split('/');
+      if (ignorePaths.includes(getUrl[1])) {
+          return next();
+      }
+      let token = req.headers.authorization || req.headers.Authorization;
+      if (token) {
+          token = token.substr('Bearer '.length)
+          try {
+              const decoded = await verifyAccessToken(token);
+              if (!decoded) {
+                  return res.status(401).json({ msg: responseMessages[1001] });
+              }
+              // const foundDeviceToken = await collectTokens(decoded.user_id);
+              // if (foundDeviceToken) {
+              req.decoded = decoded;
+              req.headers.decoded = JSON.stringify(decoded);
+              return next();
+              // }
+              // return res.status(500).json({ msg: responseMessages[1002] });
+          } catch (error) {
+              return res.status(401).json({ msg: responseMessages[1003] });
+          }
+      } else {
+          return res.status(401).json({ msg: responseMessages[1004] });
+        }
+    },
+
 };

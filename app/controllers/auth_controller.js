@@ -9,6 +9,7 @@ const { errorHandlerFunction } = require('../middlewares/error');
 const { roleNames } = require('../config/config');
 const { sendEmail } = require('../services/email_service');
 const { validate } = require('../models/roles_model');
+const { signAccessToken, signRefreshToken } = require('../services/jwt_helper');
 
 module.exports = {
   sendOtp: async (req, res) => {
@@ -329,14 +330,20 @@ module.exports = {
         roleId: checkExists.role?._id?.toString()
     });
 
-    
-      const tokens = await redisAndToken(
-        checkExists._id.toString(),
-        device_id,
-        ip,
-        getRoleId.name,
-        checkExists.role._id.toString()
-      );
+    const payload = { user_id: checkExists._id.toString(), roleType: checkExists.role.name, roleId: checkExists.role._id.toString() }
+            const accessToken = await signAccessToken(payload)
+            const refreshTokens = await signRefreshToken(payload)
+            const tokens = {
+                accessToken,
+                refreshTokens
+            }
+      // const tokens = await redisAndToken(
+      //   checkExists._id.toString(),
+      //   device_id,
+      //   ip,
+      //   getRoleId.name,
+      //   checkExists.role._id.toString()
+      // );
       // const token = await jwtHelper.signAccessToken(payload)
       const resultObj = { tokens };
       resultObj.user = checkExists;
