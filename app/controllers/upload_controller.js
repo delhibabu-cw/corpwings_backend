@@ -19,28 +19,32 @@ const upload = multer({ storage: multer.memoryStorage() });
 
 
 // Helper function to upload file buffer to Cloudinary
-const uploadToCloudinary = (buffer) => {
+const uploadToCloudinary = (buffer, mimetype) => {
   return new Promise((resolve, reject) => {
-    const stream = cloudinary.uploader.upload_stream(
-      // { folder: 'uploads',
-      //   //  resource_type: 'raw', 
-      //   },
-      { 
-        folder: 'uploads',
-        resource_type: 'raw', // Let Cloudinary detect type
-        // flags: 'attachment:false' // Prevent forced downloads
-      },
-      (error, result) => {
-        if (error) {
-          reject(error);
-        } else {
-          resolve(result);
-        }
+    const options = {
+      folder: "uploads",
+      resource_type: "auto", // Auto-detect file type (supports both images & PDFs)
+    };
+
+    const stream = cloudinary.uploader.upload_stream(options, (error, result) => {
+      if (error) {
+        return reject(error);
       }
-    );
-    stream.end(buffer); // Pass file buffer
-  });
+
+      let viewableUrl = result.secure_url; // Default URL
+
+      // If the uploaded file is a PDF, modify the URL for viewing in the browser
+      if (mimetype === "application/pdf") {
+        viewableUrl = result.secure_url.replace("/upload/", "/upload/f_pdf/");
+      }
+
+      resolve({ ...result, viewableUrl });
+    });
+
+    stream.end(buffer);
+  });
 };
+
 
 
 module.exports = {
