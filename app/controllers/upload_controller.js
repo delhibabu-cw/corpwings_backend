@@ -61,7 +61,7 @@ module.exports = {
         }
   
         try {
-          const result = await uploadToCloudinary(req.file.buffer);
+          const result = await uploadToCloudinary(req.file.buffer, req.file.mimetype);
   
           res.success({
             msg: 'File uploaded successfully!',
