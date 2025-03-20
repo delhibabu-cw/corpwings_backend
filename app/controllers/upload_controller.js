@@ -28,7 +28,7 @@ const uploadToCloudinary = (buffer) => {
       { 
         folder: 'uploads',
         resource_type: 'raw', // Let Cloudinary detect type
-        flags: 'attachment:false' // Prevent forced downloads
+        // flags: 'attachment:false' // Prevent forced downloads
       },
       (error, result) => {
         if (error) {
