@@ -65,7 +65,7 @@ module.exports = {
   
           res.success({
             msg: 'File uploaded successfully!',
-            result: { location: result.secure_url },
+            result: { location: result },
           });
         } catch (uploadError) {
           console.error('Cloudinary upload error:', uploadError);
