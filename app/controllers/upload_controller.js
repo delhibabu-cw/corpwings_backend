@@ -13,15 +13,10 @@ const cloudinary = require('../utils/cloudinary');
 // Initialize Multer with storage options
 // const upload = multer({ storage: storage });
 
-const storage = multer.memoryStorage();
-const upload = multer({ storage });
+// const storage = multer.memoryStorage();
+const upload = multer({ storage: multer.memoryStorage() });
 
 
-
-// const timestamp = Math.floor(Date.now() / 1000); // Current Unix timestamp
-// // const signature = cloudinary.utils.api_sign_request({ timestamp }, cloudinary.config().api_secret);
-
-// console.log(cloudinary.config());
 
 // Helper function to upload file buffer to Cloudinary
 const uploadToCloudinary = (buffer) => {
@@ -32,7 +27,7 @@ const uploadToCloudinary = (buffer) => {
       //   },
       { 
         folder: 'uploads',
-        // resource_type: 'auto', // Let Cloudinary detect type
+        resource_type: 'auto', // Let Cloudinary detect type
         // flags: 'attachment:false' // Prevent forced downloads
       },
       (error, result) => {

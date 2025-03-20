@@ -221,7 +221,7 @@ module.exports = {
 
       data.forEach(item => {
         worksheet.addRow(item.toObject());
-    });
+    }); 
 
     res.setHeader('Content-Disposition', 'attachment; filename=data.xlsx');
     res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
