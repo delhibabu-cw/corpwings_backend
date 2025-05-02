@@ -36,6 +36,60 @@ module.exports = {
             errorHandlerFunction(res, error)
         }
     },
+    getAuthCarrers: async (req, res) => {
+        try {
+            const _id = req.params.id;
+            const filterQuery = _id ? { _id, isDeleted: false } : { isDeleted: false };
+    
+            // Fetch Single Career with Total Applications Count
+            if (_id) {
+                const data = await db.carrer.findOne(filterQuery);
+                if (data) {
+                    const totalApplications = await db.jobApplication.countDocuments({ career: _id, isDeleted: false });
+    
+                    return res.success({
+                        msg: responseMessages[1018],
+                        result: { ...data.toObject(), totalApplications }
+                    });
+                }
+                return res.clientError({ msg: responseMessages[1015] });
+            }
+    
+            // Fetch all Careers (no pagination)
+            const careers = await db.carrer.find(filterQuery).sort({ createdAt: -1 });
+    
+            if (!careers.length) {
+                return res.success({
+                    msg: responseMessages[1014],
+                    result: []
+                });
+            }
+    
+            // Get total applications per career
+            const careerIds = careers.map(c => c._id);
+            const applicationCounts = await db.jobApplication.aggregate([
+                { $match: { career: { $in: careerIds }, isDeleted: false } },
+                { $group: { _id: "$career", totalApplications: { $sum: 1 } } }
+            ]);
+    
+            const applicationCountMap = applicationCounts.reduce((acc, curr) => {
+                acc[curr._id] = curr.totalApplications;
+                return acc;
+            }, {});
+    
+            const updatedCareers = careers.map(career => ({
+                ...career.toObject(),
+                totalApplications: applicationCountMap[career._id] || 0
+            }));
+    
+            return res.success({
+                msg: responseMessages[1018],
+                result: updatedCareers
+            });
+        } catch (error) {
+            errorHandlerFunction(res, error);
+        }
+    },    
     getCarrers: async (req, res) => {
         try {
             const _id = req.params.id;

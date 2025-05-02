@@ -15,7 +15,11 @@ module.exports = mongoose.model(
         skillSet : [String],
         vacany : String,
         currentLocation : String,
-        resume : String,
+        resume : {
+            url : String,
+            downloadUrl : String,
+            mimeType : String 
+        },
         career : { type: mongoose.Schema.Types.ObjectId, ref: 'carrer' },
         status: { type: String, enum: ['active', 'inactive'], default: 'active' },
         isDeleted: { type: Boolean, default: false },

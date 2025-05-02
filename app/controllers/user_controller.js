@@ -4,6 +4,7 @@ const { paginationFn } = require('../utils/common_utils');
 const { excel } = require('../services/imports');
 const validator = require('../validators/user');
 const db = require('../models');
+const { sendUserCreatedMail } = require('../utils/mailer');
 
 module.exports = {
   createUser: async (req, res) => {
@@ -26,6 +27,9 @@ module.exports = {
       req.body.userName = req.body.email;
       const data = await db.user.create(req.body);
       if (data && data._id) {
+        
+        await sendUserCreatedMail(data); // send mail to admin
+
         return res.success({
           msg: responseMessages[1026],
           result: data
@@ -216,6 +220,7 @@ module.exports = {
         { header: 'College Name', key: 'collegeName', width: 20 },
         { header: 'Degree', key: 'degree', width: 15 },
         { header: 'Skills', key: 'skills', width: 30 },
+        { header: 'Location', key: 'location', width: 30 },
         { header: 'Date', key: 'createdAt', width: 15 } // Add date column
       ]
 

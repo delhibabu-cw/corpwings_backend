@@ -3,4 +3,7 @@ exports.user = require('./user_controller');
 exports.auth = require('./auth_controller');
 exports.carrers = require('./carrers_controller');
 exports.jobApplication = require('./jobApplication_controller');
+exports.internship = require('./internship_controller');
 exports.upload = require('./upload_controller');
+exports.selfUpload = require('./selfUpload_controller');
+exports.googleDriveUpload = require('./googleDriverUpload_controller');

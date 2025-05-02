@@ -87,4 +87,28 @@ module.exports = {
           errorHandlerFunction(res, error);
         }
       },
+        deleteJobApplication: async (req, res) => {
+              try{
+                  const _id = req.params.id;
+                  const filterQuery = { isDeleted: false, _id };
+                  const checkExists = await db.jobApplication.findOne(filterQuery);
+                  if(!checkExists){
+                      return res.clientError({
+                          msg: responseMessages[1014]
+                      })
+                  }
+                  const data = await db.jobApplication.updateOne(filterQuery, { isDeleted: true });
+                  if(data.modifiedCount){
+                      return res.success({
+                          msg: responseMessages[1030],
+                          result: data
+                      })
+                  }
+                  return res.clientError({
+                      msg: responseMessages[1022]
+                  })
+              }catch(error){
+                  errorHandlerFunction(res, error);
+              }
+          }
 }

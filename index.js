@@ -27,6 +27,7 @@ app.use(helmet());
 
 // sanitize request data
 app.use(xss());
+app.use('/uploads', express.static('uploads'));
 
 app.use('/demo', (req, res) => {
     return res.json({ msg: `Port successfully running on ${port} `})

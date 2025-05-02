@@ -13,7 +13,11 @@ const create = Joi.object({
     skillSet: Joi.array().items(Joi.string()).required().error(commonService.getValidationMessage),
     vacany: Joi.string().optional().allow('', null).error(commonService.getValidationMessage),
     currentLocation: Joi.string().required().error(commonService.getValidationMessage),
-    resume: Joi.string().required().error(commonService.getValidationMessage),
+    resume: Joi.object({
+      url: Joi.string().required().error(commonService.getValidationMessage),
+      downloadUrl: Joi.string().required().error(commonService.getValidationMessage),
+      mimeType: Joi.string().required().error(commonService.getValidationMessage),
+    }),
     career: Joi.string().required().error(commonService.getValidationMessage),
 }).error(commonService.getValidationMessage);
 
