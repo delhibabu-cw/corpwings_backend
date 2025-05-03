@@ -1,9 +1,7 @@
 const config = require('./app/config/config');
 const { mongoose } = require('./app/services/imports');
 
-mongoose.connect(config.DB_URL,
-	{ useNewUrlParser: true, useUnifiedTopology: true }
-).then(() => {
+mongoose.connect(config.DB_URL).then(() => {
 	console.log('database connected', config.DB_URL);
 }).catch((error) => {
 	console.log('Error connecting to DB=================');
