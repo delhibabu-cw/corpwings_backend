@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "corpwingswebsite-458508",
+  "private_key_id": "a0c953917f1c01c3ac54b9f107a607d2910d7436",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC+xgMNUTynAbXO\nYUfeqoTSIUP6uw2cqx9CtvSAIt/4J3XQJmbTsbz3D3izbSgfYNNetQNf6Idd6HFU\nSW8FEx0ebumbu3gMzAS4hm3UzIPVc5cW6/iphLgOzwTrIRIJOFKPdRdooQ0onFPV\nETEb2UnqQH5XfHNyXfsPcwISHJ1de268BMJsf94xDQ+PmlJXDTLsB5+TpN38a2i/\n4aUezzT5y2FXM8At/MeBI5NXh4YfrSBby5l0EBJhKxljyUowsDVXj8O9C0q1RFWz\nJVUlr1NoeE9Gc1gEiBkpLHoIsR0GWmfU25TBFBMi7bjg1NpkIMXKDq1E15QPpden\nebNWxcWJAgMBAAECggEAH9J/59TJPUJ3xTlM98OR7EtIP6a8Goog6MwD9OvcWFSc\nvl/pfx6C2uNlyuhGbRWFrKKdMX5kNjHz1Y96SWpqzQzLQwL+f4P4tZ8W6wxCYXSq\nm1Q5Ym2VFkNKGr6ld4xBmVR61yUmQMPy5/O6MV8JiV3AtW85ArbSjj0s90B2r4UB\nqMkt+wg09eZ28w3nE+nKTjeSJGHBniea0iJLFURFYCBHKoi0jihUDWydOKNm7GBJ\n4ylQUZU+1O+NH4o95dp2ReoEo5NWiGe8xQ25IkrOs9Uswgqonckn1S1UX1jw4B5v\nhm8dHrIAeE0ln0tQeUnp63g1hBk6NRynt2Wp8A5qQQKBgQDlQP7fgZJAwduuJPRo\nM026GNG1sy806cRRIN7yVy7/LGlrHFNyZsKrNgDF2jZ4viFAQJwK/qu3MQOe+Fkf\nLJRrpsQYPOL725+hjPCqjulbelgJ8+M5mvB0luoQpzFU55UKNQKHyVPhBkqkGKWl\nRkTcanag0dgwUeuuFNwBqn/jRQKBgQDVB74SB1pFtb1lsJmAEA6SNZ0hJKdaNHBd\nvT1mouwdWFmkS+1YY7qS7qsH0Qr/VfMj76Xfsj2pKgKGJlMYv4ihH2m5m4J2eoPk\nRu6MzTJqPUexJ60AJYvlbhNaYLgSeCXyogi9NlfF9nm6SVVWKwK1opydiWoGlBIZ\nXdj0s0o7dQKBgHeosB+7Arp4NRC1SzikJprO347GYwpsRcLOtG+rX+Viqfd1Rnz8\n8/jnbAnZNvtYygQ+dPQsLzakB67PE714yFNULSA1j4hD/xMUfH2ZsGXF+vPe76ge\nnglMyAk/KzmU0q8MMjDrvbNDVGxITRVyEvk1PIv+W6gE6k3np1nbQ3s9AoGBAMUC\n+QvxUtH/Rp5B2WPu9ZrQDHX3UPICZxy6A4vlBpoI+DYSpfjFmmmCYhfDgvkqwsas\nPeoIDDBjEpx/2v+bOr9PrtYhdGEf4tP9qWX76zEHZUL3322wS5Wt3CYMJo+mH+op\nYg2isT/6Nw9J/KrI8iOKtG6ZA737uFVPTnLXUMJ1AoGAOyFbniX5NS1Q0gQk5keZ\nOVZruCMjB3FJD+72v61TYqJqv24XJERVs+NuedLgsb3bUGbhbYNoHbEFxRCO835K\nCUJFxUW9zRXzHKKSH+koPneAlQ7WR4v9UYo3Q1jtKIMANE1eKAZv2KDs/MVJRpdK\n8IVUh00Dw6K2tlTTVlB5jog=\n-----END PRIVATE KEY-----\n",
+  "client_email": "corpwings@corpwingswebsite-458508.iam.gserviceaccount.com",
+  "client_id": "101090839854668000517",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/corpwings%40corpwingswebsite-458508.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
