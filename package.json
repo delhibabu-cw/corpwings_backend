@@ -2,11 +2,11 @@
   "name": "corpwings",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "api/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "dev": "nodemon"
+    "dev": "nodemon",
+    "build": "echo 'No build needed'"
   },
   "author": "chandru",
   "license": "ISC",
@@ -34,6 +34,7 @@
     "nodemailer": "^6.9.15",
     "nodemon": "^3.1.4",
     "serverless-http": "^3.2.0",
+    "vercel": "^41.7.0",
     "xss-clean": "^0.1.4"
   }
 }

@@ -2,7 +2,5 @@
 .env
 node_modules
 .vercel
-firebase-adminsdk.json
 
-# app/utils/corpwingswebsite-458508-a0c953917f1c.json
 

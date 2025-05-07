@@ -1,5 +1,6 @@
 const { user } = require('../controllers');
-const { router } = require('../services/imports');
+const express = require('express');
+const router = express.Router(); // NEW instance every time
 
 router.post('/auth/user', user.createUser);
 router.get('/user/:id?', user.getUser);
