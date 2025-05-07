@@ -1,5 +1,5 @@
 const envConfigs = {
-    port: process.env.PORT,
+    port: process.env.CUSTOM_PORT,
     environment: process.env.NODE_ENV,
     DB_URL: process.env.DB_URL,
     redis_options: {
