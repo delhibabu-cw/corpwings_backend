@@ -6,10 +6,15 @@ const app = express();
 const { port } = require('./app/config/config');
 const responseHandler = require('./app/middlewares/response-handler');
 
+const  corsConfig = {
+    origin : "*",
+    credential: true,
+    methods: ["GET", "POST", "PUT", "DELETE"]
+}
 // Middleware setup
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors());
+app.use(cors(corsConfig));
 app.use(morgan('tiny'));
 app.use(helmet());
 app.use(xss());
