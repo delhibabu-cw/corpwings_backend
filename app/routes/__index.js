@@ -1,15 +1,28 @@
+// routes/__index.js
+
 const express = require('express');
-const fs = require('fs');
-const path = require('path');
+
+// Manually import your route files here
+const authRoutes = require('./auth');
+const userRoutes = require('./user');
+const carrerRoutes = require('./carrers'); // example
+const internshipRoutes = require('./internship'); // example
+const jobApllicationRoutes = require('./jobApplication'); // example
+const roleRoutes = require('./role'); // example
+const uploadRoutes = require('./upload'); // example
+// Add more routes as needed
 
 const router = express.Router();
 
-fs.readdirSync(__dirname)
-  .filter(file => file.endsWith('.js') && file !== '__index.js' && file !== '__common.js')
-  .forEach(file => {
-    const route = require(path.join(__dirname, file));
-    console.log(`Mounting: ${file}`);
-    router.use('/', route); // ✅ No middleware here
-  });
+// Apply routes (without middleware)
+router.use('/', authRoutes);
+router.use('/', userRoutes);
+router.use('/', carrerRoutes);
+router.use('/', internshipRoutes);
+router.use('/', jobApllicationRoutes);
+router.use('/', roleRoutes);
+router.use('/', uploadRoutes);
+
+// Add more static routes as needed
 
 module.exports = router;

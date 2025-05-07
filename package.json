@@ -2,11 +2,11 @@
   "name": "corpwings",
   "version": "1.0.0",
   "description": "",
-  "main": "api/server.js",
+  "main": "index.js",
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "dev": "nodemon",
-    "build": "echo 'No build needed'"
+    "dev": "nodemon"
   },
   "author": "chandru",
   "license": "ISC",

@@ -19,13 +19,13 @@ app.use(responseHandler());
 require('./db_connection');
 
 // Test route
-app.use('/', (req, res) => {
+app.use('/demo', (req, res) => {
     return res.json({ msg: `Port successfully running on ${port}` });
 });
 
 // Routes
-// const rout = require('./app/routes/__index');
-// app.use('/api', rout);
+const rout = require('./app/routes/__index');
+app.use('/', rout);
 
 // Start server
 app.listen(port, () => {
