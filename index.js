@@ -25,7 +25,7 @@ app.use('/demo', (req, res) => {
 
 // Routes
 const rout = require('./app/routes/__index');
-app.use('/', rout);
+app.use('/api', rout);
 
 // Start server
 app.listen(port, () => {

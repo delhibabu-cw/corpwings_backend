@@ -29,7 +29,11 @@ const responseMessages = {
   1028: 'User deleted',
   1029: 'Data Created Successfully!!!',
   1030: 'Data deleted',
-  1031: 'Application Submitted Successfully!!!'
+  1031: 'Application Submitted Successfully!!!',
+  1032: 'Client Created Successfully!!!',
+  1028: 'Client Deleted Successfully!!!',
+  1034: 'Bill Created Successfully!!!',
+  1035: 'User Deleted Successfully!!!',
 };
 
 module.exports = responseMessages;
