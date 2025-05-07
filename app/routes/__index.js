@@ -1,28 +1,30 @@
-// routes/__index.js
-
-const express = require('express');
-
-// Manually import your route files here
-const authRoutes = require('./auth');
-const userRoutes = require('./user');
-const carrerRoutes = require('./carrers'); // example
-const internshipRoutes = require('./internship'); // example
-const jobApllicationRoutes = require('./jobApplication'); // example
-const roleRoutes = require('./role'); // example
-const uploadRoutes = require('./upload'); // example
-// Add more routes as needed
+/* eslint-disable no-undef */
+// const { express, fs } = require('../services/imports');
+const express = require('express')
+const fs = require('fs')
 
 const router = express.Router();
+const middleware = require('../middlewares');
 
-// Apply routes (without middleware)
-router.use('/', authRoutes);
-router.use('/', userRoutes);
-router.use('/', carrerRoutes);
-router.use('/', internshipRoutes);
-router.use('/', jobApllicationRoutes);
-router.use('/', roleRoutes);
-router.use('/', uploadRoutes);
+// console.log(__dirname);
 
-// Add more static routes as needed
+fs.readdirSync(__dirname)
+  .filter((file) => file.indexOf('.') !== 0 && file !== '__index.js' && file !== '__common.js')
+  .forEach((file) => {
+    // console.info(`Loading file ${file}`);
+    if (file.slice(-3) === '.js') {
+      const routesFile = require(`${__dirname}/${file}`);
+      // console.log(routesFile);
+      
+      if (file === 'auth.js') {
+        router.use('/', middleware.checkSetToken(), routesFile);
+      } else {
+        router.use('/', middleware.checkSetToken(), routesFile);
+      }
+    } else if (fs.lstatSync(`${__dirname}/${file}`).isDirectory() && fs.existsSync(`${__dirname}/${file}/__index.js`)) {
+      const indexFile = require(`${__dirname}/${file}/__index.js`);
+      router.use(indexFile.routes(), indexFile.allowedMethods());
+    }
+  });
 
 module.exports = router;
