@@ -1,6 +1,5 @@
 const { internship } = require('../controllers');
-const express = require('express');
-const router = express.Router(); // NEW instance every time
+const { router } = require('../services/imports');
 
 router.post('/internships', internship.createInternship);
 router.put('/internships/:internshipId/internship-data', internship.addInternshipData);

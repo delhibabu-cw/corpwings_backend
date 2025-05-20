@@ -14,7 +14,7 @@ fs.readdirSync(__dirname)
     // console.info(`Loading file ${file}`);
     if (file.slice(-3) === '.js') {
       const routesFile = require(`${__dirname}/${file}`);
-      // console.log(routesFile);
+      console.log(routesFile);
       
       if (file === 'auth.js') {
         router.use('/', middleware.checkSetToken(), routesFile);

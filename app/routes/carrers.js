@@ -1,6 +1,5 @@
 const { carrers } = require('../controllers')
-const express = require('express');
-const router = express.Router(); // NEW instance every time
+const { router } = require('../services/imports')
 
 router.post('/carrers', carrers.createCarrer)
 router.get('/auth/carrers/:id?', carrers.getAuthCarrers)

@@ -1,6 +1,5 @@
 const { jobApplication } = require('../controllers');
-const express = require('express');
-const router = express.Router(); // NEW instance every time
+const { router } = require('../services/imports');
 
 router.post('/auth/jobApply', jobApplication.createJobApplication)
 router.get('/jobApply/:id?', jobApplication.getJobApplication)
