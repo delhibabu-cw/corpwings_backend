@@ -7,8 +7,8 @@ const { google } = require('googleapis');
 
 // Create auth object once at the top (if not already created)
 const auth = new google.auth.GoogleAuth({
-  // keyFile: path.join(__dirname, '../utils/corpwingsfileuploader-f51425d45142.json'),
-  keyFile: path.resolve(process.env.GOOGLE_DRIVE_KEY_FILE),
+  keyFile: path.join(__dirname, '../utils/corpwingsfileuploader-f51425d45142.json'),
+  // keyFile: path.resolve(process.env.GOOGLE_DRIVE_KEY_FILE),
   scopes: ['https://www.googleapis.com/auth/drive.file'],
 });
 
