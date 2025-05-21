@@ -7,7 +7,8 @@ const { google } = require('googleapis');
 
 // Create auth object once at the top (if not already created)
 const auth = new google.auth.GoogleAuth({
-  keyFile: path.join(__dirname, '../utils/corpwingswebsite-458508-a0c953917f1c.json'),
+  // keyFile: path.join(__dirname, '../utils/corpwingsfileuploader-f51425d45142.json'),
+  keyFile: path.resolve(process.env.GOOGLE_DRIVE_KEY_FILE),
   scopes: ['https://www.googleapis.com/auth/drive.file'],
 });
 
@@ -37,9 +38,10 @@ async function uploadFileToDrive(filePath, fileName) {
   
     const fileMetadata = {
       name: fileName,
-      parents: ['1ILAJlVrMFcExubL9V4iVvVyLalca6f8t'],
+      parents: ['1n4Xkx9mklYVP7YO4n0Py2cPW-iQMQ4jM'],
     };
-  
+    // const fileMetadata = { name: fileName };
+
     const media = {
       mimeType,
       body: fs.createReadStream(filePath),
