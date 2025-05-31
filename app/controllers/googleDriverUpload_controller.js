@@ -5,12 +5,15 @@ const mime = require('mime-types');
 const fileType = require('file-type');
 const { google } = require('googleapis');
 
-const credentials = JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS);
+// const credentials = process.env.GOOGLE_APPLICATION_CREDENTIALS;
+
+// console.log(credentials,"credentials");
+
 // Create auth object once at the top (if not already created)
 const auth = new google.auth.GoogleAuth({
-  credentials,
+  // credentials,
   // keyFile: path.join(__dirname, '../utils/corpwingsfileuploader-58022036bc93.json'),
-  // keyFile: path.resolve(process.env.GOOGLE_DRIVE_KEY_FILE),
+  keyFile: path.resolve(process.env.GOOGLE_APPLICATION_CREDENTIALS),
   scopes: ['https://www.googleapis.com/auth/drive.file'],
 });
 
